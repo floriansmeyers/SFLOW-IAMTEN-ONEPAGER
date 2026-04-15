@@ -503,22 +503,29 @@ h1,h2,h3,h4,p { margin: 0; }
 }
 .timeline::before {
   content: ""; position: absolute;
-  top: 22px; left: 8%; right: 8%;
-  height: 2px; background: var(--bg-dark);
+  top: 23px; left: 8%; right: 8%;
+  height: 2px; background: var(--bg-dark); opacity: .25;
 }
 .timeline li {
   position: relative;
-  padding: 50px 8px 0;
+  padding: 52px 8px 0;
   text-align: center;
   font-size: 13px;
+  counter-increment: step;
 }
 .timeline li::before {
-  content: ""; position: absolute;
-  top: 14px; left: 50%; transform: translateX(-50%);
-  width: 18px; height: 18px; border-radius: 50%;
-  background: #fff; border: 3px solid var(--bg-dark);
+  content: counter(step);
+  position: absolute;
+  top: 6px; left: 50%; transform: translateX(-50%);
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--bg-dark); color: #fff;
+  display: grid; place-items: center;
+  font-family: var(--font-display);
+  font-weight: 800; font-size: 14px;
+  box-shadow: 0 0 0 4px var(--bg-cream), 0 0 0 6px rgba(0,0,0,.12);
   z-index: 1;
 }
+.timeline { counter-reset: step; }
 .timeline li b {
   display: block;
   font-family: var(--font-display);
@@ -536,15 +543,23 @@ h1,h2,h3,h4,p { margin: 0; }
   display: block; font-style: normal;
   color: var(--muted); font-size: 11px; margin-top: 2px;
 }
-.timeline__final::before { background: var(--red) !important; border-color: var(--red) !important; width: 26px !important; height: 26px !important; top: 10px !important; }
+.timeline__final::before {
+  background: var(--red) !important;
+  color: #fff !important;
+  width: 44px !important; height: 44px !important;
+  top: 1px !important;
+  font-size: 16px !important;
+  box-shadow: 0 0 0 4px var(--bg-cream), 0 0 0 8px rgba(224,30,55,.25) !important;
+}
 .timeline__final b { color: var(--red); font-size: 18px; font-style: italic; }
 .timeline__final span { color: var(--text); }
 
 @media (max-width: 900px) {
   .timeline { grid-template-columns: 1fr; gap: 0; }
-  .timeline::before { top: 0; bottom: 0; left: 22px; right: auto; width: 2px; height: auto; }
-  .timeline li { text-align: left; padding: 18px 18px 18px 56px; }
-  .timeline li::before { top: 22px; left: 22px; transform: none; }
+  .timeline::before { top: 0; bottom: 0; left: 30px; right: auto; width: 2px; height: auto; }
+  .timeline li { text-align: left; padding: 14px 18px 14px 74px; min-height: 60px; }
+  .timeline li::before { top: 14px; left: 12px; transform: none; }
+  .timeline__final::before { top: 9px !important; left: 7px !important; }
 }
 
 /* ============ CONTACT ============ */
