@@ -436,7 +436,7 @@ h1,h2,h3,h4,p { margin: 0; }
 }
 .tier--slip .tier__name { color: #d29200; }
 .tier--burn .tier__name { color: var(--red); }
-.tier--super .tier__name { color: var(--bg-dark); }
+.tier--super .tier__name { color: #fff; }
 .tier__price {
   display: flex; align-items: baseline; gap: 12px;
 }
